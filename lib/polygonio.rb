@@ -4,8 +4,6 @@ require "polygonio/version"
 
 require "eventmachine"
 require "faraday"
-require "faraday_middleware"
-require "faraday_middleware/parse_oj"
 require "dry-struct"
 require "dry-types"
 require "permessage_deflate"

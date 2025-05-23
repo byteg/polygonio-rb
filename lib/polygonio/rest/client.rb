@@ -15,21 +15,12 @@ module Polygonio
         @request_builder = block if block_given?
       end
 
-      RETRY_OPTIONS = {
-        max: 2,
-        interval: 0.05,
-        interval_randomness: 0.5,
-        backoff_factor: 2,
-        exceptions: [Faraday::ConnectionFailed].concat(Faraday::Request::Retry::DEFAULT_EXCEPTIONS)
-      }.freeze
-
       def request
         Faraday.new(url: "#{url}?apiKey=#{api_key}") do |builder|
-          builder.request :retry, RETRY_OPTIONS
           builder.use ErrorMiddleware
           @request_builder&.call(builder)
           builder.request :json
-          builder.response :oj
+          builder.response :json
           builder.adapter Faraday.default_adapter
         end
       end
