@@ -139,7 +139,7 @@ module Polygonio
         attribute :high, Types::JSON::Decimal
         attribute :low, Types::JSON::Decimal
         attribute :close, Types::JSON::Decimal
-        attribute :volume, Types::Integer
+        attribute :volume, Types::JSON::Decimal
         attribute :after_hours, Types::JSON::Decimal
         attribute :from, Types::JSON::DateTime
       end
