@@ -91,10 +91,11 @@ module Polygonio
         attribute :status, Types::String
         attribute :results do
           attribute :T, Types::String
+          attribute :c, Types::Array.of(Types::Integer)
           attribute :f, Types::Integer
           attribute :i, Types::String
           attribute :p, Types::JSON::Decimal
-          attribute :q, Types::String
+          attribute :q, Types::Integer
           attribute :r, Types::Integer
           attribute :s, Types::Integer
           attribute :t, Types::Integer
