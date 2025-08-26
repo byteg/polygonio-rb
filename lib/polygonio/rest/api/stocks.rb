@@ -92,7 +92,7 @@ module Polygonio
         attribute :results do
           attribute :T, Types::String
           attribute :c, Types::Array.of(Types::Integer)
-          attribute :f, Types::Integer
+          attribute? :f, Types::Integer
           attribute :i, Types::String
           attribute :p, Types::JSON::Decimal
           attribute :q, Types::Integer
