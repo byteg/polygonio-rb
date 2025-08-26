@@ -89,23 +89,25 @@ module Polygonio
 
       class LastTradeResponse < PolygonResponse
         attribute :status, Types::String
-        attribute :symbol, Types::String
-        attribute :last do
-          attribute :price, Types::JSON::Decimal
-          attribute :size, Types::Integer
-          attribute :exchange, Types::Integer
-          attribute :cond1, Types::Integer
-          attribute :cond2, Types::Integer
-          attribute :cond3, Types::Integer
-          attribute? :cond4, Types::Integer
-          attribute :timestamp, Types::Integer
+        attribute :results do
+          attribute :T, Types::String
+          attribute :f, Types::Integer
+          attribute :i, Types::String
+          attribute :p, Types::JSON::Decimal
+          attribute :q, Types::String
+          attribute :r, Types::Integer
+          attribute :s, Types::Integer
+          attribute :t, Types::Integer
+          attribute :x, Types::Integer
+          attribute :y, Types::Integer
+          attribute :z, Types::Integer
         end
       end
 
       def last_trade(symbol)
         symbol = Types::String[symbol]
 
-        res = client.request.get("/v1/last/stocks/#{symbol}")
+        res = client.request.get("/v2/last/trade/#{symbol}")
         LastTradeResponse[res.body]
       end
 

@@ -45,7 +45,7 @@ module Polygonio
 
         def list(params = {})
           params = TickersParameters[params]
-          res = client.request.get("/v2/reference/tickers", params.to_h)
+          res = client.request.get("/v3/reference/tickers", params.to_h)
           TickerResponse[res.body]
         end
 
@@ -58,7 +58,7 @@ module Polygonio
         end
 
         def types
-          res = client.request.get("/v2/reference/types")
+          res = client.request.get("/v3/reference/types")
           TickerTypesResponse[res.body]
         end
 

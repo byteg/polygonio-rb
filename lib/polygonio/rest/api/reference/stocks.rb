@@ -20,7 +20,7 @@ module Polygonio
         end
 
         def splits(symbol)
-          res = client.request.get("/v2/reference/splits/#{symbol}")
+          res = client.request.get("/v3/reference/splits/#{symbol}")
           StockSplitsResponse[res.body]
         end
 
@@ -41,7 +41,7 @@ module Polygonio
         end
 
         def dividends(symbol)
-          res = client.request.get("/v2/reference/dividends/#{symbol}")
+          res = client.request.get("/v3/reference/dividends/#{symbol}")
           StockDividendsResponse[res.body]
         end
 
@@ -61,7 +61,7 @@ module Polygonio
         def financials(symbol, params = {})
           params = StockFinancialsParameters[params]
 
-          res = client.request.get("/v2/reference/financials/#{symbol}", params.to_h)
+          res = client.request.get("/v3/reference/financials/#{symbol}", params.to_h)
           StockFinancialsResponse[res.body]
         end
       end
