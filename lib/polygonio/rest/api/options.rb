@@ -39,7 +39,7 @@ module Polygonio
 
           attribute :underlying_asset do
             attribute :change_to_break_even, Types::JSON::Decimal
-            attribute :clast_updated, Types::Integer
+            attribute :last_updated, Types::Integer
             attribute :price, Types::JSON::Decimal
             attribute :ticker, Types::String
           end
