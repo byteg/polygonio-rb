@@ -96,7 +96,7 @@ module Polygonio
           attribute :i, Types::String
           attribute :p, Types::JSON::Decimal
           attribute :q, Types::Integer
-          attribute :r, Types::Integer
+          attribute? :r, Types::Integer
           attribute :s, Types::Integer
           attribute :t, Types::Integer
           attribute :x, Types::Integer

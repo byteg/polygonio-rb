@@ -4,7 +4,7 @@ module Polygonio
   module Rest
     class Options < PolygonRestHandler
       class OptionChainSnapshotResponse < PolygonResponse
-        attribute :results do
+        attribute :results, Types::Array do
           attribute :break_even_price, Types::JSON::Decimal
 
           attribute :day do
