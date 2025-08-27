@@ -34,8 +34,8 @@ module Polygonio
             attribute? :vega, Types::JSON::Decimal
           end
 
-          attribute :implied_volatility, Types::JSON::Decimal
-          attribute :open_interest, Types::JSON::Decimal
+          attribute? :implied_volatility, Types::JSON::Decimal
+          attribute? :open_interest, Types::JSON::Decimal
 
           attribute :underlying_asset do
             attribute :change_to_break_even, Types::JSON::Decimal
