@@ -28,10 +28,10 @@ module Polygonio
           end
 
           attribute :greeks do
-            attribute :delta, Types::JSON::Decimal
-            attribute :gamma, Types::JSON::Decimal
-            attribute :theta, Types::JSON::Decimal
-            attribute :vega, Types::JSON::Decimal
+            attribute? :delta, Types::JSON::Decimal
+            attribute? :gamma, Types::JSON::Decimal
+            attribute? :theta, Types::JSON::Decimal
+            attribute? :vega, Types::JSON::Decimal
           end
 
           attribute :implied_volatility, Types::JSON::Decimal
