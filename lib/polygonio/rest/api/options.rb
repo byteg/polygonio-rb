@@ -33,7 +33,7 @@ module Polygonio
             attribute :theta, Types::JSON::Decimal
             attribute :vega, Types::JSON::Decimal
           end
-          
+
           attribute :implied_volatility, Types::JSON::Decimal
           attribute :open_interest, Types::JSON::Decimal
 
@@ -42,6 +42,7 @@ module Polygonio
             attribute :clast_updated, Types::Integer
             attribute :price, Types::JSON::Decimal
             attribute :ticker, Types::String
+          end
         end
       end
 
@@ -49,6 +50,7 @@ module Polygonio
         res = client.request.get("/v3/snapshot/options/#{symbol}")
         OptionChainSnapshotResponse[res.body]
       end
+
     end
   end
 end
