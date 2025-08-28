@@ -20,14 +20,14 @@ module Polygonio
       class Ticker < PolygonResponse
         attribute :active, Types::Bool
         attribute? :cik, Types::String
-        attribute :composite_figi, Types::String
+        attribute? :composite_figi, Types::String
         attribute :currency_name, Types::String
         attribute :last_updated_utc, Types::String
         attribute :locale, Types::String
         attribute :market, Types::String
         attribute :name, Types::String
         attribute :primary_exchange, Types::String
-        attribute :share_class_figi, Types::String
+        attribute? :share_class_figi, Types::String
         attribute :ticker, Types::String
         attribute :type, Types::String
       end
