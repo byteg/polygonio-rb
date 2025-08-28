@@ -26,7 +26,7 @@ module Polygonio
         attribute :locale, Types::String
         attribute :market, Types::String
         attribute :name, Types::String
-        attribute :primary_exchange, Types::String
+        attribute? :primary_exchange, Types::String
         attribute? :share_class_figi, Types::String
         attribute :ticker, Types::String
         attribute :type, Types::String
