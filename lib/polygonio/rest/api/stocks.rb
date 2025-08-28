@@ -21,7 +21,7 @@ module Polygonio
         attribute :active, Types::Bool
         attribute? :cik, Types::String
         attribute? :composite_figi, Types::String
-        attribute :currency_name, Types::String
+        attribute? :currency_name, Types::String
         attribute :last_updated_utc, Types::String
         attribute :locale, Types::String
         attribute :market, Types::String
