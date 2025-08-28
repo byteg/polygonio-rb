@@ -39,6 +39,12 @@ module Polygonio
         attribute :results, Types::Array.of(Ticker)
       end
 
+      def all_tickers(params = {})
+        params = AllTickersParams[params]
+        res = client.request.get("/v3/reference/tickers", params.to_h)
+        AllTickersResponse[res.body]
+      end
+
       class HistoricTradesResponse < PolygonResponse
         attribute :results_count, Types::Integer
         attribute :db_latency, Types::Integer
