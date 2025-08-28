@@ -17,6 +17,28 @@ module Polygonio
         Types::Array.of(StockExchange)[res.body]
       end
 
+      class Ticker < PolygonResponse
+        attribute :active, Types::Bool
+        attribute :cik, Types::String
+        attribute :composite_figi, Types::String
+        attribute :currency_name, Types::String
+        attribute :last_updated_utc, Types::String
+        attribute :locale, Types::String
+        attribute :market, Types::String
+        attribute :name, Types::String
+        attribute :primary_exchange, Types::String
+        attribute :share_class_figi, Types::String
+        attribute :ticker, Types::String
+        attribute :type, Types::String
+      end
+
+      class AllTickersResponse < PolygonResponse
+        attribute :count, Types::Integer
+        attribute :next_url, Types::String
+        attribute :request_id, Types::String
+        attribute :results, Types::Array.of(Ticker)
+      end
+
       class HistoricTradesResponse < PolygonResponse
         attribute :results_count, Types::Integer
         attribute :db_latency, Types::Integer
