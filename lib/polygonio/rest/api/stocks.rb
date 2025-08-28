@@ -34,7 +34,7 @@ module Polygonio
 
       class AllTickersResponse < PolygonResponse
         attribute :count, Types::Integer
-        attribute :next_url, Types::String
+        attribute? :next_url, Types::String
         attribute :request_id, Types::String
         attribute :results, Types::Array.of(Ticker)
       end
