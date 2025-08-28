@@ -25,7 +25,7 @@ module Polygonio
         attribute? :last_updated_utc, Types::String
         attribute :locale, Types::String
         attribute :market, Types::String
-        attribute :name, Types::String
+        attribute? :name, Types::String
         attribute? :primary_exchange, Types::String
         attribute? :share_class_figi, Types::String
         attribute :ticker, Types::String
