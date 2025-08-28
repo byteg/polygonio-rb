@@ -40,8 +40,7 @@ module Polygonio
       end
 
       def all_tickers(params = {})
-        params = AllTickersParams[params]
-        res = client.request.get("/v3/reference/tickers", params.to_h)
+        res = client.request.get("/v3/reference/tickers", params)
         AllTickersResponse[res.body]
       end
 
