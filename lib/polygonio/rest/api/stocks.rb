@@ -29,7 +29,7 @@ module Polygonio
         attribute? :primary_exchange, Types::String
         attribute? :share_class_figi, Types::String
         attribute :ticker, Types::String
-        attribute :type, Types::String
+        attribute? :type, Types::String
       end
 
       class AllTickersResponse < PolygonResponse
