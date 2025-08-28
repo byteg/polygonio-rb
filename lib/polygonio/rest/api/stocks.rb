@@ -19,7 +19,7 @@ module Polygonio
 
       class Ticker < PolygonResponse
         attribute :active, Types::Bool
-        attribute :cik, Types::String
+        attribute? :cik, Types::String
         attribute :composite_figi, Types::String
         attribute :currency_name, Types::String
         attribute :last_updated_utc, Types::String
