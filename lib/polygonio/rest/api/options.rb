@@ -43,6 +43,16 @@ module Polygonio
             attribute :price, Types::JSON::Decimal
             attribute :ticker, Types::String
           end
+
+          attribute :last_quote do
+            attribute :ask, Types::JSON::Decimal
+            attribute :ask_size, Types::Integer
+            attribute :bid, Types::JSON::Decimal
+            attribute :bid_size, Types::Integer
+            attribute :last_updated, Types::Integer
+            attribute :midpoint, Types::JSON::Decimal
+            attribute :timeframe, Types::String
+          end
         end
       end
 
