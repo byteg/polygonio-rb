@@ -54,10 +54,13 @@ module Polygonio
             attribute :timeframe, Types::String
           end
         end
+
+        attribute? :next_url, Types::String
       end
 
-      def option_chain_snapshot(symbol)
-        res = client.request.get("/v3/snapshot/options/#{symbol}")
+      def option_chain_snapshot(symbol, limit: 10, next_url: nil)
+        url = next_url || "/v3/snapshot/options/#{symbol}?limit=#{limit}"
+        res = client.request.get(url)
         OptionChainSnapshotResponse[res.body]
       end
 
