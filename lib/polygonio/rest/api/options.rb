@@ -44,7 +44,7 @@ module Polygonio
             attribute :ticker, Types::String
           end
 
-          attribute :last_quote do
+          attribute? :last_quote do
             attribute :ask, Types::JSON::Decimal
             attribute :ask_size, Types::Integer
             attribute :bid, Types::JSON::Decimal
