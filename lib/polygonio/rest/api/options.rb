@@ -10,13 +10,13 @@ module Polygonio
           attribute :day do
             attribute? :change, Types::JSON::Decimal
             attribute? :change_percent, Types::JSON::Decimal
-            attribute :close, Types::JSON::Decimal
-            attribute :high, Types::JSON::Decimal
-            attribute :low, Types::JSON::Decimal
-            attribute :open, Types::JSON::Decimal
-            attribute :previous_close, Types::JSON::Decimal
-            attribute :volume, Types::JSON::Decimal
-            attribute :vwap, Types::JSON::Decimal
+            attribute? :close, Types::JSON::Decimal
+            attribute? :high, Types::JSON::Decimal
+            attribute?  :low, Types::JSON::Decimal
+            attribute? :open, Types::JSON::Decimal
+            attribute? :previous_close, Types::JSON::Decimal
+            attribute? :volume, Types::JSON::Decimal
+            attribute? :vwap, Types::JSON::Decimal
           end
 
           attribute :details do
@@ -38,20 +38,20 @@ module Polygonio
           attribute? :open_interest, Types::JSON::Decimal
 
           attribute :underlying_asset do
-            attribute :change_to_break_even, Types::JSON::Decimal
-            attribute :last_updated, Types::Integer
-            attribute :price, Types::JSON::Decimal
-            attribute :ticker, Types::String
+            attribute? :change_to_break_even, Types::JSON::Decimal
+            attribute? :last_updated, Types::Integer
+            attribute? :price, Types::JSON::Decimal
+            attribute? :ticker, Types::String
           end
 
           attribute? :last_quote do
-            attribute :ask, Types::JSON::Decimal
-            attribute :ask_size, Types::Integer
-            attribute :bid, Types::JSON::Decimal
-            attribute :bid_size, Types::Integer
-            attribute :last_updated, Types::Integer
-            attribute :midpoint, Types::JSON::Decimal
-            attribute :timeframe, Types::String
+            attribute? :ask, Types::JSON::Decimal
+            attribute? :ask_size, Types::Integer
+            attribute? :bid, Types::JSON::Decimal
+            attribute? :bid_size, Types::Integer
+            attribute? :last_updated, Types::Integer
+            attribute? :midpoint, Types::JSON::Decimal
+            attribute? :timeframe, Types::String
           end
         end
 
