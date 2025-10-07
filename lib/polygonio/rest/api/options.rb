@@ -8,8 +8,8 @@ module Polygonio
           attribute :break_even_price, Types::JSON::Decimal
 
           attribute :day do
-            attribute :change, Types::JSON::Decimal
-            attribute :change_percent, Types::JSON::Decimal
+            attribute? :change, Types::JSON::Decimal
+            attribute? :change_percent, Types::JSON::Decimal
             attribute :close, Types::JSON::Decimal
             attribute :high, Types::JSON::Decimal
             attribute :low, Types::JSON::Decimal
