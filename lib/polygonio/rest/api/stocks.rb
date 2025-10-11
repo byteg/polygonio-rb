@@ -124,7 +124,7 @@ module Polygonio
           attribute :p, Types::JSON::Decimal
           attribute :q, Types::Integer
           attribute? :r, Types::Integer
-          attribute? :s, Types::Integer
+          attribute? :s, Types::Float
           attribute :t, Types::Integer
           attribute :x, Types::Integer
           attribute :y, Types::Integer
