@@ -64,6 +64,33 @@ module Polygonio
         OptionChainSnapshotResponse[res.body]
       end
 
+      class AllOptionsResponse < PolygonResponse
+        attribute :results, Types::Array do
+          attribute :cfi, Types::String
+          attribute :contract_type, Types::String
+          attribute :exercise_style, Types::String
+          attribute :expiration_date, Types::JSON::Date
+          attribute :primary_exchange, Types::String
+          attribute :shares_per_contract, Types::Integer
+          attribute :strike_price, Types::JSON::Decimal
+          attribute :ticker, Types::String
+          attribute :underlying_ticker, Types::String
+
+          attribute :additional_underlyings, Types::Array do
+            attribute :amount, Types::Integer
+            attribute :underlying, Types::String
+            attribute :type, Types::String
+          end
+        end
+
+        attribute? :next_url, Types::String
+      end
+
+      def all_options(symbol, limit: 10, next_url: nil)
+        url = next_url || "/v3/reference/options/#{symbol}?limit=#{limit}"
+        res = client.request.get(url)
+        AllOptionsResponse[res.body]
+      end
     end
   end
 end
