@@ -87,7 +87,7 @@ module Polygonio
       end
 
       def all_options(symbol, limit: 10, next_url: nil)
-        url = next_url || "/v3/reference/options/#{symbol}?limit=#{limit}"
+        url = next_url || "/v3/reference/options/contracts?ticker=#{symbol}&limit=#{limit}"
         res = client.request.get(url)
         AllOptionsResponse[res.body]
       end
