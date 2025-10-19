@@ -58,8 +58,8 @@ module Polygonio
         attribute? :next_url, Types::String
       end
 
-      def option_chain_snapshot(symbol, limit: 10, next_url: nil)
-        url = next_url || "/v3/snapshot/options/#{symbol}?limit=#{limit}"
+      def option_chain_snapshot(symbol, limit: 10, expiration_date: nil, next_url: nil)
+        url = next_url || "/v3/snapshot/options/#{symbol}?limit=#{limit}&expiration_date=#{expiration_date}"
         res = client.request.get(url)
         OptionChainSnapshotResponse[res.body]
       end
