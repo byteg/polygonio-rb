@@ -364,6 +364,14 @@ module Polygonio
           end
           attribute? :implied_volatility, Types::JSON::Decimal
 
+          attribute? :details do
+            attribute :contract_type, Types::String
+            attribute :expiration_date, Types::JSON::Date
+            attribute :shares_per_contract, Types::Integer
+            attribute :strike_price, Types::JSON::Decimal
+            attribute :ticker, Types::String
+          end
+
           attribute? :underlying_asset do
             attribute? :change_to_break_even, Types::JSON::Decimal
             attribute? :last_updated, Types::Integer
