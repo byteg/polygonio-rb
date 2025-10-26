@@ -387,7 +387,7 @@ module Polygonio
 
       def unified_snapshot(tickers, type)
         tickers = tickers.join(",") if tickers.is_a?(Array)
-        res = client.request.get("/v3/snapshot?ticker.any_of=#{tickers}&type=#{type}")
+        res = client.request.get("/v3/snapshot?", {"ticker.any_of" => tickers, "type" => type})
         UnifiedSnapshotResponse[res.body]
       end
     end
