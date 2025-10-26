@@ -369,6 +369,7 @@ module Polygonio
             attribute :expiration_date, Types::JSON::Date
             attribute :shares_per_contract, Types::Integer
             attribute :strike_price, Types::JSON::Decimal
+            attribute? :ticker, Types::String
           end
 
           attribute? :underlying_asset do
