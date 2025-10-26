@@ -352,6 +352,35 @@ module Polygonio
         res = client.request.get("/v2/aggs/grouped/locale/#{locale}/market/#{market.upcase}/#{date}", { unadjusted: unadjusted })
         GroupedDailyResponse[res.body]
       end
+
+      class UnifiedSnapshotResponse < PolygonResponse
+        attribute :results, Types::Array do
+          attribute? :break_even_price, Types::JSON::Decimal
+          attribute? :greeks do
+            attribute? :delta, Types::JSON::Decimal
+            attribute? :gamma, Types::JSON::Decimal
+            attribute? :theta, Types::JSON::Decimal
+            attribute? :vega, Types::JSON::Decimal
+          end
+          attribute? :implied_volatility, Types::JSON::Decimal
+
+          attribute? :last_quote do
+            attribute? :ask, Types::JSON::Decimal
+            attribute? :ask_size, Types::Integer
+            attribute? :bid, Types::JSON::Decimal
+            attribute? :bid_size, Types::Integer
+            attribute? :last_updated, Types::Integer
+            attribute? :midpoint, Types::JSON::Decimal
+            attribute? :timeframe, Types::String
+          end
+        end
+      end
+
+      def unified_snapshot(tickers, type)
+        tickers = tickers.join(",") if tickers.is_a?(Array)
+        res = client.request.get("/v3/snapshot?tickers=#{tickers}&type=#{type}")
+        UnifiedSnapshotResponse[res.body]
+      end
     end
   end
 end
