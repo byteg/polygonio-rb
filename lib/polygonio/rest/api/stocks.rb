@@ -364,6 +364,14 @@ module Polygonio
           end
           attribute? :implied_volatility, Types::JSON::Decimal
 
+          attribute? :underlying_asset do
+            attribute? :change_to_break_even, Types::JSON::Decimal
+            attribute? :last_updated, Types::Integer
+            attribute? :price, Types::JSON::Decimal
+            attribute? :ticker, Types::String
+            attribute? :timeframe, Types::String
+          end
+
           attribute? :last_quote do
             attribute? :ask, Types::JSON::Decimal
             attribute? :ask_size, Types::Integer
@@ -373,12 +381,13 @@ module Polygonio
             attribute? :midpoint, Types::JSON::Decimal
             attribute? :timeframe, Types::String
           end
+          attribute? :ticker, Types::String
         end
       end
 
       def unified_snapshot(tickers, type)
         tickers = tickers.join(",") if tickers.is_a?(Array)
-        res = client.request.get("/v3/snapshot?tickers=#{tickers}&type=#{type}")
+        res = client.request.get("/v3/snapshot?ticker.any_of=#{tickers}&type=#{type}")
         UnifiedSnapshotResponse[res.body]
       end
     end
