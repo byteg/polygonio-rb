@@ -77,7 +77,7 @@ module Polygonio
           attribute :underlying_ticker, Types::String
 
           attribute? :additional_underlyings, Types::Array do
-            attribute :amount, Types::Integer
+            attribute :amount, Types::Float
             attribute :underlying, Types::String
             attribute :type, Types::String
           end
