@@ -77,7 +77,7 @@ module Polygonio
           attribute :underlying_ticker, Types::String
 
           attribute? :additional_underlyings, Types::Array do
-            attribute :amount
+            attribute :amount, Types::JSON::Decimal
             attribute :underlying, Types::String
             attribute :type, Types::String
           end
