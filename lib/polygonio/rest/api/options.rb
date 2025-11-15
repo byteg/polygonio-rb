@@ -68,9 +68,9 @@ module Polygonio
         attribute :results, Types::Array do
           attribute :cfi, Types::String
           attribute :contract_type, Types::String
-          attribute :exercise_style, Types::String
+          attribute? :exercise_style, Types::String
           attribute :expiration_date, Types::JSON::Date
-          attribute :primary_exchange, Types::String
+          attribute? :primary_exchange, Types::String
           attribute :shares_per_contract, Types::Integer
           attribute :strike_price, Types::JSON::Decimal
           attribute :ticker, Types::String
