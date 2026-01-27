@@ -5,12 +5,10 @@ module Polygonio
     class Client
       Struct.new("Reference", :locales, :markets, :stocks, :tickers)
 
-      BASE_URL = "https://api.polygon.io/"
-
       attr_reader :url, :api_key
 
-      def initialize(api_key, &block)
-        @url = BASE_URL
+      def initialize(base_url, api_key, &block)
+        @url = base_url
         @api_key = Types::String[api_key]
         @request_builder = block if block_given?
       end

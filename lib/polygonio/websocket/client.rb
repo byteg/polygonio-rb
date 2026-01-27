@@ -119,15 +119,14 @@ module Polygonio
     end
 
     class Client
-      BASE_URL = "wss://socket.polygon.io/"
-
-      def initialize(path, api_key, opts = {})
+      def initialize(base_url, path, api_key, opts = {})
         path = Types::Coercible::String.enum("stocks", "forex", "crypto")[path]
+        @base_url = base_url
 
         @api_key = api_key
         @ws = nil
         @opts = opts
-        @url = "#{BASE_URL}#{path}"
+        @url = "#{@base_url}#{path}"
       end
 
       def subscribe(channels, &block)
