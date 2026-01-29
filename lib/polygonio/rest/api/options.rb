@@ -5,14 +5,14 @@ module Polygonio
     class Options < PolygonRestHandler
       class OptionChainSnapshotResponse < PolygonResponse
         attribute :results, Types::Array do
-          attribute :break_even_price, Types::JSON::Decimal
+          attribute? :break_even_price, Types::JSON::Decimal
 
           attribute :day do
             attribute? :change, Types::JSON::Decimal
             attribute? :change_percent, Types::JSON::Decimal
             attribute? :close, Types::JSON::Decimal
             attribute? :high, Types::JSON::Decimal
-            attribute?  :low, Types::JSON::Decimal
+            attribute? :low, Types::JSON::Decimal
             attribute? :open, Types::JSON::Decimal
             attribute? :previous_close, Types::JSON::Decimal
             attribute? :volume, Types::JSON::Decimal
