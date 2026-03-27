@@ -416,9 +416,7 @@ module Polygonio
       end
 
       def quotes(ticker, timestamp = nil)
-        ticker = Types::String[ticker]
-        timestamp = Types::Integer[timestamp]
-        res = client.request.get("/v3/quotes?stockTicker=#{ticker}", { timestamp: timestamp }.compact)
+        res = client.request.get("/v3/quotes/#{ticker}", { timestamp: timestamp }.compact)
         QuotesResponse[res.body]
       end      
     end
