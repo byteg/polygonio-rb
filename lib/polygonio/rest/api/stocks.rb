@@ -398,6 +398,29 @@ module Polygonio
         res = client.request.get("/v3/snapshot?", {"ticker.any_of" => tickers, "type" => type})
         UnifiedSnapshotResponse[res.body]
       end
+
+      class QuotesResponse < PolygonResponse
+        attribute :results, Types::Array do
+          attribute :ask_exchange, Types::Integer
+          attribute :ask_price, Types::JSON::Decimal
+          attribute :ask_size, Types::Integer
+          attribute :bid_exchange, Types::Integer
+          attribute :bid_price, Types::JSON::Decimal
+          attribute :bid_size, Types::Integer
+          attribute :conditions, Types::Array.of(Types::Integer)
+          attribute :participant_timestamp, Types::Integer
+          attribute :sequence_number, Types::Integer
+          attribute :sip_timestamp, Types::Integer
+          attribute :tape, Types::Integer
+        end
+      end
+
+      def quotes(ticker, timestamp = nil)
+        ticker = Types::String[ticker]
+        timestamp = Types::Integer[timestamp]
+        res = client.request.get("/v3/quotes?stockTicker=#{ticker}", { timestamp: timestamp }.compact)
+        QuotesResponse[res.body]
+      end      
     end
   end
 end
