@@ -86,13 +86,16 @@ module Polygonio
         attribute? :next_url, Types::String
       end
 
-      def all_options(symbol, limit: 10, expiration_date: nil, next_url: nil)
+      def all_options(symbol, limit: 10, expiration_date: nil, expired: false, next_url: nil)
         if next_url.present?
           url = next_url
         else
           url = "/v3/reference/options/contracts?underlying_ticker=#{symbol}&limit=#{limit}"
           if expiration_date.present?
             url += "&expiration_date=#{expiration_date}"
+          end
+          if expired
+            url += "&expired=true"
           end
         end
         res = client.request.get(url)
