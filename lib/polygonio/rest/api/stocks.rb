@@ -416,7 +416,7 @@ module Polygonio
       end
 
       def quotes(ticker, timestamp = nil)
-        res = client.request.get("/v3/quotes/#{ticker}", { timestamp: timestamp }.compact)
+        res = client.request.get("/v3/quotes/#{ticker}", { "timestamp.gte": timestamp }.compact)
         QuotesResponse[res.body]
       end      
     end
