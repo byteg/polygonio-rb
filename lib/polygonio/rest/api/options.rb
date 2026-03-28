@@ -117,7 +117,7 @@ module Polygonio
         attribute? :next_url, Types::String
       end
 
-      def quotes(ticker, timestamp = nil, limit = 1000, sort = 'timestamp', order = 'asc', next_url: nil)
+      def quotes(ticker, timestamp: nil, limit: 1000, sort: 'timestamp', order: 'asc', next_url: nil)
         if next_url.present?
           url = next_url
         else
