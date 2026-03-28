@@ -101,6 +101,34 @@ module Polygonio
         res = client.request.get(url)
         AllOptionsResponse[res.body]
       end
+
+      class QuotesResponse < PolygonResponse
+        attribute :results, Types::Array do
+          attribute :ask_exchange, Types::Integer
+          attribute :ask_price, Types::JSON::Decimal
+          attribute :ask_size, Types::Integer
+          attribute :bid_exchange, Types::Integer
+          attribute :bid_price, Types::JSON::Decimal
+          attribute :bid_size, Types::Integer
+          attribute :sequence_number, Types::Integer
+          attribute :sip_timestamp, Types::Integer
+        end
+
+        attribute? :next_url, Types::String
+      end
+
+      def quotes(ticker, timestamp = nil, limit = 1000, sort = 'timestamp', order = 'asc', next_url: nil)
+        if next_url.present?
+          url = next_url
+        else
+          url = "/v3/quotes/#{ticker}?limit=#{limit}&sort=#{sort}&order=#{order}"
+          if timestamp.present?
+            url += "&timestamp.gte=#{timestamp}"
+          end
+        end
+        res = client.request.get(url)
+        QuotesResponse[res.body]
+      end
     end
   end
 end
