@@ -117,13 +117,16 @@ module Polygonio
         attribute? :next_url, Types::String
       end
 
-      def quotes(ticker, timestamp: nil, limit: 1000, sort: 'timestamp', order: 'asc', next_url: nil)
+      def quotes(ticker, timestamp_gte: nil, timestamp_lte: nil, limit: 1000, sort: 'timestamp', order: 'asc', next_url: nil)
         if next_url.present?
           url = next_url
         else
           url = "/v3/quotes/#{ticker}?limit=#{limit}&sort=#{sort}&order=#{order}"
-          if timestamp.present?
-            url += "&timestamp.gte=#{timestamp}"
+          if timestamp_gte.present?
+            url += "&timestamp.gte=#{timestamp_gte}"
+          end
+          if timestamp_lte.present?
+            url += "&timestamp.lte=#{timestamp_lte}"
           end
         end
         res = client.request.get(url)
