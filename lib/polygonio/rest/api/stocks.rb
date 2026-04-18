@@ -407,7 +407,7 @@ module Polygonio
           attribute :bid_exchange, Types::Integer
           attribute :bid_price, Types::JSON::Decimal
           attribute :bid_size, Types::Integer
-          attribute :conditions, Types::Array.of(Types::Integer)
+          attribute? :conditions, Types::Array.of(Types::Integer)
           attribute :participant_timestamp, Types::Integer
           attribute :sequence_number, Types::Integer
           attribute :sip_timestamp, Types::Integer
