@@ -48,7 +48,7 @@ module Polygonio
           attribute? :asset_sub_class, Types::String
           attribute? :date, Types::JSON::Date
           attribute? :last_updated, Types::String
-          attribute :name, Types::String
+          attribute? :name, Types::String
           attribute? :price_quotation, Types::String
           attribute? :product_code, Types::String
           attribute? :sector, Types::String
@@ -56,7 +56,7 @@ module Polygonio
           attribute? :settlement_method, Types::String
           attribute? :settlement_type, Types::String
           attribute? :sub_sector, Types::String
-          attribute :trade_currency_code, Types::String
+          attribute? :trade_currency_code, Types::String
           attribute? :trading_venue, Types::String
           attribute? :type, Types::String
           attribute? :unit_of_measure, Types::String
