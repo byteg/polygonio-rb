@@ -39,6 +39,40 @@ module Polygonio
         res = client.request.get(url)
         AllContractsResponse[res.body]
       end
+
+      class AllProductsResponse < PolygonResponse
+        attribute? :next_url, Types::String
+
+        attribute :results, Types::Array do
+          attribute? :asset_class, Types::String
+          attribute? :asset_sub_class, Types::String
+          attribute? :date, Types::JSON::Date
+          attribute? :last_updated, Types::String
+          attribute :name, Types::String
+          attribute? :price_quotation, Types::String
+          attribute? :product_code, Types::String
+          attribute? :sector, Types::String
+          attribute? :settlement_currency_code, Types::String
+          attribute? :settlement_method, Types::String
+          attribute? :settlement_type, Types::String
+          attribute? :sub_sector, Types::String
+          attribute :trade_currency_code, Types::String
+          attribute? :trading_venue, Types::String
+          attribute? :type, Types::String
+          attribute? :unit_of_measure, Types::String
+          attribute? :unit_of_measure_qty, Types::Integer
+        end
+      end
+
+      def all_products(next_url: nil)
+        if next_url.present?
+          url = next_url
+        else
+          url = "/futures/v1/products"
+        end
+        res = client.request.get(url)
+        AllProductsResponse[res.body]
+      end
     end
   end
 end
