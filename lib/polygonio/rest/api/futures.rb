@@ -27,11 +27,14 @@ module Polygonio
         end
       end
 
-      def all_contracts(next_url: nil)
+      def all_contracts(active: true, next_url: nil)
         if next_url.present?
           url = next_url
         else
           url = "/futures/v1/contracts"
+          if active
+            url += "?active=true"
+          end
         end
         res = client.request.get(url)
         AllContractsResponse[res.body]
