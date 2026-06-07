@@ -9,21 +9,21 @@ module Polygonio
         attribute :results, Types::Array do
           attribute :active, Types::Bool
           attribute :date, Types::JSON::Date
-          attribute :days_to_maturity, Types::Integer
-          attribute :first_trade_date, Types::JSON::Date
+          attribute? :days_to_maturity, Types::Integer
+          attribute? :first_trade_date, Types::JSON::Date
           attribute :group_code, Types::String
-          attribute :last_trade_date, Types::JSON::Date
-          attribute :max_order_quantity, Types::Integer
-          attribute :min_order_quantity, Types::Integer
+          attribute? :last_trade_date, Types::JSON::Date
+          attribute? :max_order_quantity, Types::Integer
+          attribute? :min_order_quantity, Types::Integer
           attribute :name, Types::String
           attribute :product_code, Types::String
-          attribute :settlement_date, Types::JSON::Date
-          attribute :settlement_tick_size, Types::JSON::Decimal
-          attribute :spread_tick_size, Types::JSON::Decimal
+          attribute? :settlement_date, Types::JSON::Date
+          attribute? :settlement_tick_size, Types::JSON::Decimal
+          attribute? :spread_tick_size, Types::JSON::Decimal
           attribute :ticker, Types::String
-          attribute :trade_tick_size, Types::JSON::Decimal
-          attribute :trading_venue, Types::String
-          attribute :type, Types::String
+          attribute? :trade_tick_size, Types::JSON::Decimal
+          attribute? :trading_venue, Types::String
+          attribute? :type, Types::String
         end
       end
 
