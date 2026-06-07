@@ -60,7 +60,7 @@ module Polygonio
           attribute? :trading_venue, Types::String
           attribute? :type, Types::String
           attribute? :unit_of_measure, Types::String
-          attribute? :unit_of_measure_qty, Types::Integer
+          attribute? :unit_of_measure_qty, Types::JSON::Decimal
         end
       end
 
