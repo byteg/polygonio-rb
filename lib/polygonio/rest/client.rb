@@ -47,6 +47,10 @@ module Polygonio
       def options
         Rest::Options.new(self)
       end
+
+      def futures
+        Rest::Futures.new(self)
+      end
     end
 
     class PolygonRestHandler
