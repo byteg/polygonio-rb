@@ -27,13 +27,13 @@ module Polygonio
         end
       end
 
-      def all_contracts(active: true, next_url: nil)
+      def all_contracts(last_trade_date_gte: nil, next_url: nil)
         if next_url.present?
           url = next_url
         else
           url = "/futures/v1/contracts"
-          if active
-            url += "?active=true"
+          if last_trade_date_gte.present?
+            url += "?last_trade_date.gte=#{last_trade_date_gte}"
           end
         end
         res = client.request.get(url)
