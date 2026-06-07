@@ -31,9 +31,9 @@ module Polygonio
         if next_url.present?
           url = next_url
         else
-          url = "/futures/v1/contracts"
+          url = "/futures/v1/contracts?active=true"
           if last_trade_date_gte.present?
-            url += "?last_trade_date.gte=#{last_trade_date_gte}"
+            url += "&last_trade_date.gte=#{last_trade_date_gte}"
           end
         end
         res = client.request.get(url)
