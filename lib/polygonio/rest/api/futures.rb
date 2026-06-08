@@ -65,11 +65,7 @@ module Polygonio
       end
 
       def all_products(limit: 100, next_url: nil)
-        if next_url.present?
-          url = next_url
-        else
-          url = "/futures/v1/products?limit=#{limit}"
-        end
+        url = next_url.present? ? next_url : "/futures/v1/products?limit=#{limit}"
         res = client.request.get(url)
         AllProductsResponse[res.body]
       end
