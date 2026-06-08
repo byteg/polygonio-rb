@@ -27,7 +27,7 @@ module Polygonio
         end
       end
 
-      def all_contracts(last_trade_date_gte: nil, next_url: nil)
+      def all_contracts(last_trade_date_gte: nil, limit: 100, next_url: nil)
         if next_url.present?
           url = next_url
         else
@@ -64,11 +64,11 @@ module Polygonio
         end
       end
 
-      def all_products(next_url: nil)
+      def all_products(limit: 100, next_url: nil)
         if next_url.present?
           url = next_url
         else
-          url = "/futures/v1/products"
+          url = "/futures/v1/products?limit=#{limit}"
         end
         res = client.request.get(url)
         AllProductsResponse[res.body]
