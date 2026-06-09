@@ -65,9 +65,13 @@ module Polygonio
       end
 
       def all_products(last_trade_date_gte: nil, limit: 100, next_url: nil)
-        url = next_url.present? ? next_url : "/futures/v1/products?limit=#{limit}"
-        if last_trade_date_gte.present?
-          url += "&last_trade_date.gte=#{last_trade_date_gte}"
+        if next_url.present?
+          url = next_url
+        else
+          url = "/futures/v1/products?limit=#{limit}"
+          if last_trade_date_gte.present?
+            url += "&last_trade_date.gte=#{last_trade_date_gte}"
+          end
         end
         res = client.request.get(url)
         AllProductsResponse[res.body]
