@@ -27,11 +27,14 @@ module Polygonio
         end
       end
 
-      def all_contracts(date: nil, type: nil, product_code: nil, sort: "date.asc", limit: 100, next_url: nil)
+      def all_contracts(date: nil, active: true, type: nil, product_code: nil, sort: "date.asc", limit: 100, next_url: nil)
         if next_url.present?
           url = next_url
         else
           url = "/futures/v1/contracts?limit=#{limit}"
+          if active
+            url += "&active=true"
+          end
           if date.present?
             url += "&date.gte=#{date}"
           end
