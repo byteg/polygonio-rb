@@ -27,13 +27,22 @@ module Polygonio
         end
       end
 
-      def all_contracts(last_trade_date_gte: nil, limit: 100, next_url: nil)
+      def all_contracts(date: nil, type: nil, product_code: nil, sort: "date.asc", limit: 100, next_url: nil)
         if next_url.present?
           url = next_url
         else
-          url = "/futures/v1/contracts?active=true&limit=#{limit}"
-          if last_trade_date_gte.present?
-            url += "&last_trade_date.gte=#{last_trade_date_gte}"
+          url = "/futures/v1/contracts?limit=#{limit}"
+          if date.present?
+            url += "&date.gte=#{date}"
+          end
+          if type.present?
+            url += "&type=#{type}"
+          end
+          if product_code.present?
+            url += "&product_code=#{product_code}"
+          end
+          if sort.present?
+            url += "&sort=#{sort}"
           end
         end
         res = client.request.get(url)
